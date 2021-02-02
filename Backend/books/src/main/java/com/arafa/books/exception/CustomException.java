@@ -18,11 +18,9 @@ public class CustomException{
     public String getMessage() {
         return message;
     }
-
     public HttpStatus getHttpStatus() {
         return httpStatus;
     }
-
     public ZonedDateTime getZonedDateTime() {
         return zonedDateTime;
     }

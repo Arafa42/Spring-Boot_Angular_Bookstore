@@ -1,5 +1,6 @@
 package com.arafa.books.service;
 
+import com.arafa.books.exception.CustomRequestException;
 import com.arafa.books.model.Author;
 import com.arafa.books.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Service
 public class AuthorService {
-
+ 
     @Autowired
     private AuthorRepository authorRepository;
 
@@ -25,17 +26,21 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-    public Author getAuthorById(Long id){
-        return authorRepository.findById(id).orElse(null);
-    }
+    public Author getAuthorById(Long id){ return authorRepository.findById(id).orElse(null);}
 
     public String deleteAuthor(Long id){
-       authorRepository.deleteById(id);
+       try {
+           authorRepository.deleteById(id);
+       }
+       catch (Exception e) {
+           throw new CustomRequestException("Delete operation failde, no member with id : "+id);
+       }
        return "Author deleted with id : " + id;
     }
 
     public Author updateAuthor(Author author,Long id){
         Author existingAuthor = authorRepository.findById(id).orElse(null);
+        try {
         if(author.getFirstName() !=null)
             existingAuthor.setFirstName(author.getFirstName());
         if(author.getLastName() !=null)
@@ -44,6 +49,8 @@ public class AuthorService {
             existingAuthor.setBirthdate(author.getBirthdate());
         if(author.getLifeDescription() !=null)
             existingAuthor.setLifeDescription(author.getLifeDescription());
+        }
+        catch (Exception e) {throw new CustomRequestException("Update operation failed"); }
         return authorRepository.save(existingAuthor);
     }
 

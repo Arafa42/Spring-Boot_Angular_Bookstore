@@ -1,0 +1,53 @@
+mat-toolbar{
+    background-color: rgb(32, 184, 255);
+    color: white;
+}
+
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+.parent{
+  background: url("../../../assets/images/bg.jpg");  
+  width: 100%;
+  height: 100%;
+}
+
+.title{
+    width: 600px;
+    height: 450px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    background-color: aliceblue;
+    opacity: 80%;
+    box-shadow: 10px 10px 5px grey;
+}
+.text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding: 150px 0;
+    color: rgb(32, 184, 255);
+    text-shadow: 1px 1px gray;
+    opacity: 100%;
+    
+}
+
+.matbut{
+padding: 40px;
+}
+
+button{
+    background-color: rgb(32, 184, 255);
+    color: aliceblue;
+}
+
+button:hover{
+    color: rgba(0, 0, 0, 0.336);
+    background-color: rgba(32, 184, 255, 0.575);
+
+}

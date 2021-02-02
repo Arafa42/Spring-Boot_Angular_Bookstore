@@ -14,11 +14,11 @@ import java.time.ZonedDateTime;
 public class CustomExceptionHandler {
 
     @ExceptionHandler(value = {CustomRequestException.class})
-    public ResponseEntity<Object> handleCustomException(CustomRequestException e){
+    public ResponseEntity<Object> handleCustomException(CustomRequestException ex){
 
         HttpStatus badRequest = HttpStatus.BAD_REQUEST;
        CustomException customException = new CustomException(
-                e.getMessage(),
+                ex.getMessage(),
                 badRequest,
                 ZonedDateTime.now(ZoneId.of("Z"))
         );
