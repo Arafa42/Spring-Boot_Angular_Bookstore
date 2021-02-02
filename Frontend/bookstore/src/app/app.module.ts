@@ -10,13 +10,23 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { BooksComponent } from './components/books/books.component';
+import { AuthorsComponent } from './components/authors/authors.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ApiManagerComponent } from './components/api-manager/api-manager.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BottomnavigationComponent
+    BottomnavigationComponent,
+    BooksComponent,
+    AuthorsComponent,
+    ProfileComponent,
+    ApiManagerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

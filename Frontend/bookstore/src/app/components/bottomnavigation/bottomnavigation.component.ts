@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bottomnavigation',
   templateUrl: './bottomnavigation.component.html',
   styleUrls: ['./bottomnavigation.component.scss']
 })
-export class BottomnavigationComponent implements OnInit {
+export class BottomnavigationComponent implements OnInit
+{
 
-  constructor() { }
+  constructor(private router: Router)
+  {
 
-  ngOnInit(): void {
+  }
+
+  ngOnInit(): void
+  {
+  }
+
+
+  navigate()
+  {
+    this.router.navigate(["/books"]);
   }
 
 }
