@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class AuthorService {
- 
+
     @Autowired
     private AuthorRepository authorRepository;
 
@@ -49,6 +49,8 @@ public class AuthorService {
             existingAuthor.setBirthdate(author.getBirthdate());
         if(author.getLifeDescription() !=null)
             existingAuthor.setLifeDescription(author.getLifeDescription());
+        if(author.getAuthorImageURL() !=null)
+            existingAuthor.setAuthorImageURL(author.getAuthorImageURL());
         }
         catch (Exception e) {throw new CustomRequestException("Update operation failed"); }
         return authorRepository.save(existingAuthor);

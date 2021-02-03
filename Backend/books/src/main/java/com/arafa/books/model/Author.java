@@ -36,14 +36,21 @@ public class Author {
     )
     private String lastName;
     @Column(
-            name="birthdate"
+            name="birthdate",
+            columnDefinition = "TEXT"
     )
-    private Date birthdate;
+    private String birthdate;
     @Column(
             name="lifeDescription",
             columnDefinition = "TEXT"
     )
     private String lifeDescription;
+    @Column(
+            name="authorImageURL",
+            columnDefinition = "TEXT"
+    )
+    private String authorImageURL;
+
 
     public Long getId() {
         return id;
@@ -69,11 +76,11 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
     public String getLifeDescription() {
@@ -84,13 +91,17 @@ public class Author {
         this.lifeDescription = lifeDescription;
     }
 
-    public Author(String firstName, String lastName, Date birthdate, String lifeDescription){
+    public String getAuthorImageURL() {return authorImageURL; }
+
+    public void setAuthorImageURL(String authorImageURL) { this.authorImageURL = authorImageURL; }
+
+    public Author(String firstName, String lastName, String birthdate, String lifeDescription,String authorImageURL){
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
         this.lifeDescription = lifeDescription;
+        this.authorImageURL = authorImageURL;
     }
-
 
     @Override
     public String toString() {
@@ -100,6 +111,7 @@ public class Author {
                 ", lastName='" + lastName + '\'' +
                 ", birthdate=" + birthdate +
                 ", lifeDescription='" + lifeDescription + '\'' +
+                ", authorImageURL='" + authorImageURL + '\'' +
                 '}';
     }
 

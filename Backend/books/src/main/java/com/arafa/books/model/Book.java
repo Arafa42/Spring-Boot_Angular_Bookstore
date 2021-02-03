@@ -60,6 +60,10 @@ public class Book {
             columnDefinition = "TEXT"
     )
     private String summary;
+    @Column(name="price")
+    private Double price;
+    @Column(name="rating")
+    private Integer rating;
 
     public Long getId() {
         return id;
@@ -125,6 +129,14 @@ public class Book {
         this.summary = summary;
     }
 
+    public Double getPrice() { return price; }
+
+    public void setPrice(Double price) { this.price = price; }
+
+    public Integer getRating() { return rating; }
+
+    public void setRating(Integer rating) { this.rating = rating; }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -136,10 +148,12 @@ public class Book {
                 ", category='" + category + '\'' +
                 ", coverURL='" + coverURL + '\'' +
                 ", summary='" + summary + '\'' +
+                ", price=" + price +
+                ", rating=" + rating +
                 '}';
     }
 
-    public Book(String bookName, String author, String category, Long isbn, String coverURL,String summary)
+    public Book(String bookName, String author, String category, Long isbn, String coverURL, String summary, Double price, Integer rating)
     {
         this.bookName = bookName;
         this.author = author;
@@ -147,11 +161,10 @@ public class Book {
         this.isbn = isbn;
         this.coverURL = coverURL;
         this.summary = summary;
+        this.price = price;
+        this.rating = rating;
+
     }
 
-
-
     public Book(){}
-
-
 }

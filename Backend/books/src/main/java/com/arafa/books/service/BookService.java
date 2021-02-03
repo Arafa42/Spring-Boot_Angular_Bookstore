@@ -43,6 +43,10 @@ public class BookService {
             existingBook.setIsbn(book.getIsbn());
         if(book.getSummary() != null)
             existingBook.setSummary(book.getSummary());
+        if(book.getPrice() != null)
+            existingBook.setPrice(book.getPrice());
+        if(book.getRating() != null)
+            existingBook.setRating(book.getRating());
         return bookRepository.save(existingBook);
     }
 

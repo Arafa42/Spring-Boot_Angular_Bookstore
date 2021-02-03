@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/books")
 @RestController
 public class BookController {
