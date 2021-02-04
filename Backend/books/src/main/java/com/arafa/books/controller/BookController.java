@@ -27,7 +27,7 @@ public class BookController {
     public List<Book> getAllBooks(){return bookService.getAllBooks();}
 
     @DeleteMapping("{id}")
-    public String deleteBook(Long id){return bookService.deleteBook(id);}
+    public String deleteBook(@PathVariable Long id){return bookService.deleteBook(id);}
 
     @PutMapping("{id}")
     public Book updateBook(@PathVariable Long id,@Valid @RequestBody Book book){return bookService.updateBook(book,id);}

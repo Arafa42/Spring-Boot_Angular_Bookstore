@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Author } from 'src/app/models/Author';
 import { Book } from 'src/app/models/Book';
+import { User } from 'src/app/models/User';
 import { IAuthors } from './IAuthors';
 import { IBooks } from './IBooks';
+import { IUsers } from './IUsers';
 
 @Injectable({
   providedIn: 'root'
@@ -82,6 +84,47 @@ export class BackendService
     const url = this.requestURL + "/books";
     return this.http.post<any>(url, book);
   }
+
+
+  //USERS
+  //_______________________________________________
+
+  public getAllUsers()
+  {
+    const url = this.requestURL + "/users";
+    return this.http.get<IUsers[]>(url);
+  }
+
+  public getUserById(id: number)
+  {
+    const url = this.requestURL + "/users/" + id;
+    return this.http.get<IUsers>(url);
+  }
+
+  public getUserByEmail(email: string)
+  {
+    const url = this.requestURL + "/users/" + email;
+    return this.http.get<IUsers>(url);
+  }
+
+  public deleteUser(id: number)
+  {
+    const url = this.requestURL + "/users" + id;
+    return this.http.delete<IUsers>(url);
+  }
+
+  public updateUser(email: string, firstName: string, lastName: string, address: string, postcode: number, gemeente: string, gebdatum: string, gender: string)
+  {
+    const url = this.requestURL + "/users/" + email;
+    return this.http.put<any>(url, { firstName: firstName, lastName: lastName, email: email, address: address, postcode: postcode, gemeente: gemeente, gebdatum: gebdatum, gender: gender });
+  }
+
+  public createUser(user: User)
+  {
+    const url = this.requestURL + "/users/createUser";
+    return this.http.post<any>(url, user);
+  }
+
 
 
 }

@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo&display=swap');
+
+
+.submitButton {
+    text-align: center;
+    margin: auto;
+}
+
+
+.login-header {
+    background: var(--ion-color-custom2);
+
+}
+
+.login-header {
+    position: relative;
+    border-radius: 0em;
+}
+
+.login-header:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: var(--ion-color-custom2);
+    border-bottom: 0;
+    margin-left: -15px;
+    margin-bottom: -15px;
+}
+
+.logo-img {
+    padding: 7px;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+
+heading-column-lr {
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+[big-heading] {
+    font-family: "Chivo" !important;
+    font-size: 30px !important;
+    color: rgb(32, 184, 255);
+}
+
+[small-heading] {
+    font-family: "Chivo" !important;
+    margin-left: auto;
+    padding-right: 40px;
+    font-size: 15px;
+    color: rgb(32, 184, 255);
+}
+
+
+
+
+[transparent] {
+    --background: transparent;
+}
+
+
+
+.ion-text-center {
+    color:rgb(32, 184, 255);
+}
+
+
+[icon-small] {
+    width: 50px;
+    height: 50px;
+    //   background-color: rgba(255, 255, 255, 0.7);
+
+}
+
+
+[linespace] {
+    height: 30px;
+}
+
+[linespace2] {
+    height: 15px;
+}
+
+
+
+.center {
+    margin-top: 3%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: center;
+}
+
+.link-button{
+    padding-left: 10px;
+}
+
+
+@keyframes slide {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -400px 0;
+    }
+}
+
+#hln {
+    margin-top: 15%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.input-field {
+    width: 100%;
+}
+
+#cooo {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    display: block;
+}
+
+.mat-icon {
+    transform: scale(1);
+    padding-right: 15%;
+}
+
+.submitButton2 {
+    text-align: center;
+    margin: auto;
+    color: #303030;
+}
+
+.iconSize {
+    font-size: larger;
+}

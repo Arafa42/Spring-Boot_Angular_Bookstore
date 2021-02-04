@@ -1,0 +1,133 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Chivo&display=swap');
+
+.titelCarShare {
+  text-align: center;
+  font-family: "Chivo" !important;
+  font-weight: bold;
+}
+
+.submitButton {
+  text-align: center;
+  margin: auto;
+}
+
+
+
+.login-header {
+  position: relative;
+  border-radius: 0em;
+}
+
+.login-header:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-bottom: 0;
+  margin-left: -15px;
+  margin-bottom: -15px;
+}
+
+heading-column-lr {
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+[big-heading] {
+  font-family: "Chivo" !important;
+  font-size: 30px !important;
+  color: rgb(32, 184, 255);
+
+}
+
+[small-heading] {
+  font-family: "Chivo" !important;
+  margin-left: auto;
+  padding-right: 40px;
+  font-size: 15px;
+}
+
+
+
+[icon-small] {
+  width: 30px;
+}
+
+
+
+[linespace] {
+  height: 30px;
+}
+
+[linespace2] {
+  height: 15px;
+}
+
+label {
+  font-size: 14px;
+  display: block;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  text-align: center;
+}
+
+
+
+button:hover {
+  --background: #777777;
+  color: rgb(32, 184, 255);
+}
+
+@keyframes slide {
+  from {
+      background-position: 0 0;
+  }
+
+  to {
+      background-position: -400px 0;
+  }
+}
+
+form>ion-item {
+  border: 1px solid aqua;
+
+}
+
+img {
+  margin-left: 2.5%;
+}
+
+#hu {
+  --border-radius: 10%;
+  border-radius: 10%;
+}
+
+.input-field {
+  width: 100%;
+}
+
+.mat-label {
+  left: 0;
+  padding: 15px !important;
+}
+
+.signup{
+  padding-left: 10px;
+}
+
+
+#email,
+#pass {
+  font-size: larger;
+}

@@ -1,0 +1,136 @@
+<div class="center">
+
+    <div id="hln">
+        <h1 big-heading>Sign Up</h1>
+        <h3 style="text-align: left;">Welcome to Bookstore...</h3>
+    </div>
+
+    <form #form="ngForm" (ngSubmit)="signUp(form)">
+
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label style="display:inline-flex;" class="iconSize">
+                <mat-icon [inline]="true">assignment_ind</mat-icon>
+                Name &nbsp;&nbsp;
+            </mat-label>
+            <input [(ngModel)]="UserDataToUpload.firstName" name="name" type="text" matInput autocomplete="off" ngModel
+                required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label style="display:inline-flex;" class="iconSize">
+                <mat-icon [inline]="true">assignment_ind</mat-icon>
+                Surname &nbsp;&nbsp;&nbsp;
+            </mat-label>
+            <input [(ngModel)]="UserDataToUpload.lastName" type="text" name="surname" matInput autocomplete="off"
+                ngModel required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label style="display:inline-flex;" class="iconSize">
+                <mat-icon [inline]="true">email</mat-icon>
+                Email &nbsp;&nbsp;
+            </mat-label>
+            <input [(ngModel)]="UserDataToUpload.email" name="email" type="text" matInput autocomplete="off" ngModel
+                required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label style="display:inline-flex;" class="iconSize">
+                <mat-icon [inline]="true"> vpn_key</mat-icon>
+                Password &nbsp;&nbsp;&nbsp;
+            </mat-label>
+            <input type="password" name="password" matInput autocomplete="off" ngModel required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label style="display:inline-flex;" class="iconSize">
+                <mat-icon [inline]="true">location_on</mat-icon>
+                Address &nbsp;&nbsp;
+            </mat-label>
+            <input [(ngModel)]="UserDataToUpload.address" name="address" type="text" matInput autocomplete="off" ngModel
+                required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label style="display:inline-flex;" class="iconSize">
+                <mat-icon icon-small [inline]="true">pin_drop</mat-icon>
+                Postcode &nbsp;&nbsp;&nbsp;
+            </mat-label>
+            <input min="0" [(ngModel)]="UserDataToUpload.postcode" type="number" name="postalcode" matInput
+                autocomplete="off" ngModel required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label style="display:inline-flex;" class="iconSize">
+                <mat-icon [inline]="true">flag</mat-icon>
+                Gemeente &nbsp;&nbsp;
+            </mat-label>
+            <input [(ngModel)]="UserDataToUpload.gemeente" type="text" name="country" matInput autocomplete="off"
+                ngModel required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label style="display:inline-flex;" class="iconSize">
+                <mat-icon [inline]="true">calendar_today</mat-icon>
+                Birthday &nbsp;&nbsp;
+            </mat-label>
+            <input [(ngModel)]="UserDataToUpload.gebdatum" type="date" name="gebdatum" matInput autocomplete="off"
+                ngModel required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+            <mat-label style="display:inline-flex;" class="iconSize">
+                <mat-icon [inline]="true">wc</mat-icon>
+                Gender &nbsp;&nbsp;
+            </mat-label>
+
+            <mat-select [(ngModel)]="UserDataToUpload.gender" (ionChange)="onChange(UserDataToUpload.gender)"
+                interface="dropdown" placeholder="Gender" name="gender" ngModel required>
+                <mat-option value="female">Female</mat-option>
+                <mat-option value="male">Male</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="submitButton">
+
+
+            <p-button label="Sign up" class="submitButton2" type="submit" (click)="PostData()" [disabled]="form.invalid"
+                tappable></p-button>
+
+
+            <p-button label="Login?" class="link-button" routerLink="/login"></p-button>
+
+
+        </div>
+        <div linespace></div>
+    </form>
+</div>
+<p></p>
+
+
+
+<p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>
+
+
+<p-toast position=" bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>

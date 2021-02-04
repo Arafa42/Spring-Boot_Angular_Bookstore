@@ -1,0 +1,36 @@
+<div class="center">
+
+    <div style="margin-bottom: 10%;" id="dd">
+        <h1 big-heading>Login</h1>
+    </div>
+
+    <form #form="ngForm" (ngSubmit)="login(form)">
+
+        <mat-form-field id="hahaha" appearance="outline" class="input-field" style="vertical-align: middle;">
+            <mat-label style="display: inline-flex;" id="email">
+                <mat-icon [inline]="true">assignment_ind</mat-icon>
+                &nbsp; Email
+            </mat-label>
+            <input name="email" type="email" matInput autocomplete="off" ngModel required>
+        </mat-form-field>
+
+        <mat-form-field id="hahaha" appearance="outline" class="input-field" style="vertical-align: middle;">
+            <mat-label style="display: inline-flex;" id="pass">
+                <mat-icon [inline]="true"> vpn_key</mat-icon>
+                &nbsp; Password
+            </mat-label>
+            <input name="password" type="password" matInput autocomplete="off" ngModel required>
+        </mat-form-field>
+
+        <div class="submitButton">
+
+            <p-button label="Login" class="submitbtn" type="submit" [disabled]="form.invalid" tappable>
+            </p-button>
+            <p-button label="Sign up?" class="signup" routerLink="/signup" tappable></p-button>
+        </div>
+        <div linespace></div>
+
+    </form>
+
+</div>
+<p></p>

@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/Authentication/auth.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit
+{
 
-  constructor() { }
+  constructor(public AuthService: AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
   }
+
+
+  logOut()
+  {
+    this.AuthService.Logout();
+  }
+
 
 }

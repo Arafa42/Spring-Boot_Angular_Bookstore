@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { ApiManagerComponent } from './components/api-manager/api-manager.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { BooksComponent } from './components/books/books.component';
 import { BottomnavigationComponent } from './components/bottomnavigation/bottomnavigation.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { BasketComponent } from './components/basket/basket.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 const routes: Routes = [
@@ -15,9 +17,11 @@ const routes: Routes = [
   { path: "books", component: BooksComponent },
   { path: "authors", component: AuthorsComponent },
   { path: "profile", component: ProfileComponent },
-  { path: "api-manager", component: ApiManagerComponent },
-  { path: "", redirectTo: "home", pathMatch: "full" },
-
+  { path: "basket", component: BasketComponent },
+  { path: "login", component: SigninComponent },
+  { path: "signup", component: SignupComponent },
+  { path: "", redirectTo: "signup", pathMatch: "full" },
+  { path: "**", redirectTo: "signup", pathMatch: "full" },
 
 ];
 
