@@ -13,8 +13,6 @@ import { BackendService } from 'src/app/services/backend/backend.service';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  providers: [MessageService]
-
 })
 export class SignupComponent implements OnInit
 {
@@ -25,13 +23,13 @@ export class SignupComponent implements OnInit
     lastName: "",
     email: "",
     address: "",
-    postcode: 0,
+    postcode: 1111,
     gemeente: "",
     gebdatum: "",
     gender: ""
   };
 
-  constructor(public backendService: BackendService, private messageService: MessageService, private authService: AuthService, private firebaseAuth: AngularFireAuth, private router: Router)
+  constructor(public backendService: BackendService, private authService: AuthService, private firebaseAuth: AngularFireAuth, private router: Router)
   {
     this.firebaseAuth.authState.subscribe(authState =>
     {
@@ -43,77 +41,40 @@ export class SignupComponent implements OnInit
   {
   }
 
-  get isAuthenticated(): boolean
-  {
-    return this.authState !== null;
-  }
 
   onChange(selected)
   {
     console.log(selected);
   }
 
-  showSticky()
-  {
-    this.messageService.add({ severity: 'info', summary: 'Sticky', detail: 'Message Content', sticky: true });
-  }
-
-  onConfirm()
-  {
-    this.messageService.clear('c');
-  }
-
-  onReject()
-  {
-    this.messageService.clear('c');
-  }
-
-  clear()
-  {
-    this.messageService.clear();
-  }
-
-  showSuccess()
-  {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'User created' });
-  }
-
-  showFailure()
-  {
-    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'email not valid or already in use' });
-  }
 
 
 
   async signUp(form): Promise<void>
   {
     await this.authService.SignUp(form.value.email, form.value.password);
+    console.log(this.authService.isAuthenticated);
   }
-
-
-  PostData()
-  {
-    if (this.authService.IsLoggedIn) {
-      this.PostNewUserData();
-      this.showSuccess();
-    }
-  }
-
 
 
   PostNewUserData()
   {
-    this.backendService.createUser(this.UserDataToUpload).subscribe(
-      data =>
-      {
-        console.log(data);
-      },
-      (error: HttpErrorResponse) =>
-      {
-        console.log(error);
-      }
+    if (this.authService.fail) {
+      this.backendService.createUser(this.UserDataToUpload).subscribe(
+        data =>
+        {
+          console.log(data);
+        },
+        (error: HttpErrorResponse) =>
+        {
+          console.log(error);
+        }
 
-    );
+      );
+    }
+    else {
+      console.log("error...");
+    }
   }
 
 }

@@ -1,2 +1,12 @@
-<p>profile works!</p>
-<button (click)="logOut()">Log out</button>
+<div class="container">
+    <div class="title">profile works!</div>
+    <div class="firstName">{{profileData.firstName}}</div>
+    <div class="lastName">{{profileData.lastName}}</div>
+    <div class="email">{{profileData.email}}</div>
+    <div class="address">{{profileData.address}}</div>
+    <div class="postcode">{{profileData.postcode}}</div>
+    <div class="gemeente">{{profileData.gemeente}}</div>
+    <div class="gebdatum">{{profileData.gebdatum}}</div>
+    <div class="gender">{{profileData.gender}}</div>
+    <button (click)="logOut()">Log out</button>
+</div>

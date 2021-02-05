@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LocalStorageManager } from 'src/app/other/LocalStorageManager';
 import { Observable } from 'rxjs';
+import { SnackbarService } from 'src/app/services/Snackbar/snackbar.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService
 {
 
@@ -16,8 +18,10 @@ export class AuthService
   IsLoggedIn: boolean = false;
   CurrentUser: String = "";
   CurrentEmail: string = "";
+  signUpSucces: boolean = false;
+  fail: boolean = false;
 
-  constructor(private firebaseAuth: AngularFireAuth, public router: Router)
+  constructor(private firebaseAuth: AngularFireAuth, public router: Router, public snackBarService: SnackbarService)
   {
 
     this.firebaseAuth.authState.subscribe(authState =>
@@ -33,14 +37,19 @@ export class AuthService
     this.firebaseAuth.createUserWithEmailAndPassword(email, password)
       .then(value =>
       {
+        this.signUpSucces = true;
         this.IsLoggedIn = true;
+        LocalStorageManager.SetCurrentMail(email);
         this.GetCurrentEmail();
         this.router.navigateByUrl("home");
         console.log(value);
+        this.snackBarService.ShowSuccesMessage("Account registered succesfully");
       })
       .catch(err =>
       {
         console.log(err.message);
+        this.snackBarService.ShowErrorMessage("An error occured with the registration");
+        this.fail = true;
 
       });
   }
@@ -55,10 +64,12 @@ export class AuthService
         this.GetCurrentEmail();
         this.IsLoggedIn = true;
         console.log(this.GetCurrentEmail());
+        this.snackBarService.ShowSuccesMessage("Succesfully logged in");
       })
       .catch(err =>
       {
         console.log(err.message);
+        this.snackBarService.ShowErrorMessage("an error occured with the login");
       });
   }
 

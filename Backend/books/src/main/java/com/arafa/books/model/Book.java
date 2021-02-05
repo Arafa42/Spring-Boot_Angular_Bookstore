@@ -2,6 +2,7 @@ package com.arafa.books.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "com.arafa.BooksApplication.Book")
 @Table(name="book")

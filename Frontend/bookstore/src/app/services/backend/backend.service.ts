@@ -97,13 +97,13 @@ export class BackendService
 
   public getUserById(id: number)
   {
-    const url = this.requestURL + "/users/" + id;
+    const url = this.requestURL + "/users/getById/" + id;
     return this.http.get<IUsers>(url);
   }
 
   public getUserByEmail(email: string)
   {
-    const url = this.requestURL + "/users/" + email;
+    const url = this.requestURL + "/users/getByMail/" + email;
     return this.http.get<IUsers>(url);
   }
 
