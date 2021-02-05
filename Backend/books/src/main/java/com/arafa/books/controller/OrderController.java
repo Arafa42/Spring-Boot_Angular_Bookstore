@@ -1,0 +1,62 @@
+package com.arafa.books.controller;
+
+
+import com.arafa.books.model.Book;
+import com.arafa.books.model.Order;
+import com.arafa.books.model.User;
+import com.arafa.books.repository.OrderRepository;
+import com.arafa.books.service.BookService;
+import com.arafa.books.service.OrderService;
+import com.arafa.books.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@CrossOrigin(origins = "*")
+@RequestMapping("/api/v1/orders")
+@RestController
+public class OrderController {
+
+    @Autowired
+    private OrderService orderService;
+
+    @PostMapping("/createOrder/{email}")
+    public Order createOrder(@RequestBody  Order order,@PathVariable String email){return orderService.createOrder(order,email);}
+
+    @GetMapping("{id}")
+    public Order getOrderById(@PathVariable Long id){return orderService.getOrderById(id);}
+
+    @GetMapping("/getByMail/{email}")
+    public List<Order> getOrdersByMail(@PathVariable String email){return orderService.getOrdersByEmail(email);}
+
+    @DeleteMapping("{id}")
+    public String deleteOrder(@PathVariable Long id){return orderService.deleteOrder(id);}
+
+
+   // @Autowired
+   // private OrderService orderService;
+   // private OrderRepository orderRepository;
+
+  //  public OrderController(OrderService orderService,OrderRepository orderRepository){
+  //      this.orderService = orderService;
+  //     this.orderRepository = orderRepository;
+  //  }
+
+  //  @PostMapping("/create")
+  //  public ResponseEntity<Object> createOrder(@RequestBody Order order){
+  //      return orderService.addOrder(order);
+  //  }
+
+  //  @GetMapping("/details/{id}")
+  //  public Order getOrder(@PathVariable Long id){
+  //      if(orderRepository.findById(id).isPresent()) {
+  //      return orderRepository.findById(id).get();
+  //      }
+  //      else{
+  //          return null;
+  //      }
+  //      }
+    }

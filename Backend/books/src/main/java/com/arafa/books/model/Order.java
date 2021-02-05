@@ -2,7 +2,6 @@ package com.arafa.books.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.util.List;
 
 @Entity(name = "com.arafa.BooksApplication.Order")
 @Table(name="orders")
@@ -28,21 +27,34 @@ public class Order {
     )
     private Double totalPrice;
     @Column(
-            name="amount"
+            name="totalAmount"
     )
-    private Integer amount;
+    private Integer totalAmount;
     @Email
     @Column(
             name="email",
             columnDefinition = "TEXT"
     )
     private String email;
-
-    @OneToMany
     @Column(
-            name="products"
+            name="price"
     )
-    private List<Book> products;
+    private Double price;
+
+    @Column(
+            name="itemName",
+            columnDefinition = "TEXT"
+    )
+    private String itemName;
+    @Column(
+            name="itemImageURL",
+            columnDefinition = "TEXT"
+    )
+    private String itemImageURL;
+
+    //@OneToMany(targetEntity = Book.class,cascade = CascadeType.ALL)
+    //@JoinColumn(name = "order_id")
+    //private List<Book> products;
 
 
     public Long getId() {
@@ -61,14 +73,6 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -76,31 +80,71 @@ public class Order {
     public void setEmail(String email) {
         this.email = email;
     }
+    //public List<Book> getProducts() {
+    //    return products;
+   // }
 
+    //public void setProducts(List<Book> products) {
+    //    this.products = products;
+    //}
 
-    public List<Book> getProducts() {
-        return products;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setProducts(List<Book> products) {
-        this.products = products;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public Order(Long id, Double totalPrice, Integer amount, String email, List<Book> products) {
+    public Integer getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Integer totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public String getItemImageURL() {
+        return itemImageURL;
+    }
+
+    public void setItemImageURL(String itemImageURL) {
+        this.itemImageURL = itemImageURL;
+    }
+
+
+
+
+    public Order(Long id, Double totalPrice, Integer totalAmount, String email, /*List<Book> products*/Double price, String itemName, String itemImageURL) {
         this.id = id;
         this.totalPrice = totalPrice;
-        this.amount = amount;
+        this.totalAmount = totalAmount;
         this.email = email;
-        this.products = products;
+      //  this.products = products;
+        this.price = price;
+        this.itemName = itemName;
+        this.itemImageURL = itemImageURL;
     }
+
 
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
                 ", totalPrice=" + totalPrice +
-                ", amount=" + amount +
-                ", products=" + products +
+                ", totalAmount=" + totalAmount +
+                ", email='" + email + '\'' +
+                ", price=" + price +
+                ", itemName='" + itemName + '\'' +
+                ", itemImageURL='" + itemImageURL + '\'' +
                 '}';
     }
 

@@ -13,7 +13,16 @@ import { BackendService } from 'src/app/services/backend/backend.service';
 export class ProfileComponent implements OnInit
 {
 
-  profileData: User;
+  profileData: User = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    postcode: 0,
+    gemeente: "",
+    gebdatum: "",
+    gender: ""
+  };
 
   constructor(public AuthService: AuthService, public backendService: BackendService) { }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Message, MessageService, PrimeNGConfig, SelectItem } from 'primeng/api';
 import { Book } from 'src/app/models/Book';
+import { Order } from 'src/app/models/Order';
+import { LocalStorageManager } from 'src/app/other/LocalStorageManager';
 import { BackendService } from 'src/app/services/backend/backend.service';
 
 @Component({
@@ -14,6 +16,14 @@ export class BooksComponent implements OnInit
 {
 
   allBooks: Book[] = [];
+  order: Order = {
+    totalPrice: 0.0,
+    totalAmount: 0,
+    email: "",
+    price: 0.0,
+    itemName: "",
+    itemImageURL: ""
+  };
   sortOptions: SelectItem[];
   sortOrder: number;
   sortField: string;
@@ -26,6 +36,8 @@ export class BooksComponent implements OnInit
   ngOnInit(): void
   {
 
+    console.log(LocalStorageManager.GetCurrentMail());
+
     this.sortOptions = [
       { label: 'Price High to Low', value: '!price' },
       { label: 'Price Low to High', value: 'price' }
@@ -35,9 +47,33 @@ export class BooksComponent implements OnInit
   }
 
 
+  lala(id: number)
+  {
+    this.order.email = LocalStorageManager.GetCurrentMail();
+    this.order.itemImageURL = this.allBooks[id - 1].coverURL;
+    this.order.itemName = this.allBooks[id - 1].bookName;
+    this.order.price = this.allBooks[id - 1].price;
+    this.order.totalAmount++;
+    this.order.totalPrice += this.allBooks[id - 1].price;
+
+    console.log(this.allBooks[id - 1].bookName);
+    this.backendService.createOrderByMail(this.order, LocalStorageManager.GetCurrentMail()).subscribe(
+      data =>
+      {
+        //console.log(data);$
+        this.showSuccess();
+      },
+      error =>
+      {
+        console.log(error);
+      }
+    );
+  }
+
+
   showSuccess()
   {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Book added to basket' });
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Item added to basket' });
   }
 
 

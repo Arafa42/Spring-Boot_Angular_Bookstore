@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Author } from 'src/app/models/Author';
 import { Book } from 'src/app/models/Book';
+import { Order } from 'src/app/models/Order';
 import { User } from 'src/app/models/User';
 import { IAuthors } from './IAuthors';
 import { IBooks } from './IBooks';
+import { IOrders } from './IOrders';
 import { IUsers } from './IUsers';
 
 @Injectable({
@@ -34,7 +36,7 @@ export class BackendService
 
   public deleteAuthor(id: number)
   {
-    const url = this.requestURL + "/authors" + id;
+    const url = this.requestURL + "/authors/" + id;
     return this.http.delete<IAuthors>(url);
   }
 
@@ -69,7 +71,7 @@ export class BackendService
 
   public deleteBook(id: number)
   {
-    const url = this.requestURL + "/books" + id;
+    const url = this.requestURL + "/books/" + id;
     return this.http.delete<IBooks>(url);
   }
 
@@ -109,7 +111,7 @@ export class BackendService
 
   public deleteUser(id: number)
   {
-    const url = this.requestURL + "/users" + id;
+    const url = this.requestURL + "/users/" + id;
     return this.http.delete<IUsers>(url);
   }
 
@@ -125,6 +127,29 @@ export class BackendService
     return this.http.post<any>(url, user);
   }
 
+
+
+  //ORDERS
+  //_______________________________________________
+
+
+  public getOrdersByEmail(email: string)
+  {
+    const url = this.requestURL + "/orders/getByMail/" + email;
+    return this.http.get<IOrders>(url);
+  }
+
+  public deleteOrder(id: number)
+  {
+    const url = this.requestURL + "/orders/" + id;
+    return this.http.delete<IOrders>(url);
+  }
+
+  public createOrderByMail(order: Order, mail: String)
+  {
+    const url = this.requestURL + "/orders/createOrder/" + mail;
+    return this.http.post<any>(url, order);
+  }
 
 
 }

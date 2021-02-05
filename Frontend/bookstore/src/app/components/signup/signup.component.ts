@@ -59,7 +59,7 @@ export class SignupComponent implements OnInit
 
   PostNewUserData()
   {
-    if (this.authService.fail) {
+    if (!this.authService.fail) {
       this.backendService.createUser(this.UserDataToUpload).subscribe(
         data =>
         {

@@ -1,8 +1,9 @@
 package com.arafa.books.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity(name = "com.arafa.BooksApplication.Book")
 @Table(name="book")
@@ -65,6 +66,10 @@ public class Book {
     private Double price;
     @Column(name="rating")
     private Integer rating;
+
+    @JsonIgnore
+    @ManyToOne
+    private Order order;
 
     public Long getId() {
         return id;
@@ -138,6 +143,14 @@ public class Book {
 
     public void setRating(Integer rating) { this.rating = rating; }
 
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -164,8 +177,9 @@ public class Book {
         this.summary = summary;
         this.price = price;
         this.rating = rating;
-
     }
 
     public Book(){}
+
+
 }
