@@ -136,7 +136,7 @@ export class BackendService
   public getOrdersByEmail(email: string)
   {
     const url = this.requestURL + "/orders/getByMail/" + email;
-    return this.http.get<IOrders>(url);
+    return this.http.get<IOrders[]>(url);
   }
 
   public deleteOrder(id: number)

@@ -44,6 +44,9 @@ export class BooksComponent implements OnInit
     ];
     this.primengConfig.ripple = true;
     this.getAllBooks();
+
+    this.order.totalAmount = Number(LocalStorageManager.GetTotalAmountOfOrders());
+    this.order.totalPrice = Number(LocalStorageManager.GetTotalPriceOfOrders());
   }
 
 
@@ -56,6 +59,10 @@ export class BooksComponent implements OnInit
     this.order.totalAmount++;
     this.order.totalPrice += this.allBooks[id - 1].price;
 
+
+    LocalStorageManager.SetTotalAmountOfOrders(this.order.totalAmount.toString());
+    LocalStorageManager.SetTotalPriceOfOrders(this.order.totalPrice.toString());
+    console.log(this.order.totalAmount);
     console.log(this.allBooks[id - 1].bookName);
     this.backendService.createOrderByMail(this.order, LocalStorageManager.GetCurrentMail()).subscribe(
       data =>
@@ -66,6 +73,7 @@ export class BooksComponent implements OnInit
       error =>
       {
         console.log(error);
+        this.showError();
       }
     );
   }
@@ -76,6 +84,10 @@ export class BooksComponent implements OnInit
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Item added to basket' });
   }
 
+  showError()
+  {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'something went wrong' });
+  }
 
   public getAllBooks()
   {

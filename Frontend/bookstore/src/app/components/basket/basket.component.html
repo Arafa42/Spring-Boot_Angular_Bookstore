@@ -1,1 +1,39 @@
-<p>basket works!</p>
+<div class="titel">Receipt</div>
+<p></p>
+
+
+<div class="center">
+    <p-table [scrollable]="true" scrollHeight="400px" [value]="orders">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Image</th>
+                <th>Product name</th>
+                <th>Price</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-order>
+            <tr>
+                <td>
+                    <img src="{{order.itemImageURL}}" width="100px">
+                </td>
+                <td>
+                    <span class="image-text">{{order.itemName}}</span>
+                </td>
+                <td>
+                    <span class="image-text">€{{order.price}}</span>
+                </td>
+                <!-- <td>
+                    <span [class]="'customer-badge status-' + customer.status">{}}</span>
+                </td> -->
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<p></p>
+<div class="container">
+    <div class="totalPrice">
+        Total price : €{{totalPrice}}
+        <p></p>
+        <button>Order</button>
+    </div>
+</div>

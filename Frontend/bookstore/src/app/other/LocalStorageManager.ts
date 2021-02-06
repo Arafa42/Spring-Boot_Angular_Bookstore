@@ -1,6 +1,9 @@
 export class LocalStorageManager
 {
     private static CurrentEmail: string = "";
+    private static totalAmountOfOrders: string = "";
+    private static totalPriceOfOrders: string = "";
+
 
 
     static SetCurrentMail(email: string)
@@ -20,4 +23,45 @@ export class LocalStorageManager
         }
         return this.CurrentEmail;
     }
+
+
+
+    static SetTotalAmountOfOrders(totalAmount: string)
+    {
+        this.totalAmountOfOrders = totalAmount;
+        localStorage.setItem('totalAmountOfOrders', this.totalAmountOfOrders);
+    }
+
+    static GetTotalAmountOfOrders()
+    {
+        var totalAmount = localStorage.getItem('totalAmountOfOrders');
+        if (totalAmount == null) {
+            this.totalAmountOfOrders = "";
+        }
+        else {
+            this.totalAmountOfOrders = totalAmount;
+        }
+        return this.totalAmountOfOrders;
+    }
+
+
+    static SetTotalPriceOfOrders(totalPrice: string)
+    {
+        this.totalPriceOfOrders = totalPrice;
+        localStorage.setItem('totalPriceOfOrders', this.totalPriceOfOrders);
+    }
+
+    static GetTotalPriceOfOrders()
+    {
+        var totalPrice = localStorage.getItem('totalPriceOfOrders');
+        if (totalPrice == null) {
+            this.totalPriceOfOrders = "";
+        }
+        else {
+            this.totalPriceOfOrders = totalPrice;
+        }
+        return this.totalPriceOfOrders;
+    }
+
+
 }
