@@ -1,0 +1,152 @@
+mat-toolbar{
+    background-color: rgb(32, 184, 255);
+    color: white;
+}
+
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+
+#user{
+display: block;
+float: left;
+margin-left: 100px;
+
+}
+#envelope{
+    display: block;
+    float: left;
+    margin-left: 100px;
+}
+#compass{
+    display: block;
+    float: left;
+    margin-left: 100px;
+}
+#compass2{
+    display: block;
+    float: left;
+    margin-left: 100px;
+}
+#calendar{
+    display: block;
+    float: left;
+    margin-left: 100px;
+}
+#heart{
+    display: block;
+    float: left;
+    margin-left: 100px;
+}
+
+
+
+.title{
+    margin-top: 30px;
+    width: 700px;
+    height: 750px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: aliceblue;
+    opacity: 80%;
+    box-shadow: 10px 10px 5px grey;
+}
+.text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding: 60px 0;
+    color: rgb(32, 184, 255);
+    text-shadow: 1px 1px lightcyan;
+    opacity: 100%; 
+}
+
+
+.ttl{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding: 30px 0;
+    font-weight: bold;
+    color: rgb(32, 184, 255);
+    text-shadow: 1px 1px lightcyan;
+    opacity: 100%; 
+}
+
+
+.fullName{
+    border:1px solid skyblue;
+    border-radius: 15px;
+    height: 50px;
+    padding-top: 15px;
+    padding-right: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.email{
+    border:1px solid skyblue;
+    height: 50px;
+    padding-top: 15px;
+    padding-right: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 15px;
+}
+.address{
+    border:1px solid skyblue;
+    height: 50px;
+    padding-top: 15px;
+    padding-right: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 15px;
+}
+.zipGemeente{
+    border:1px solid skyblue;
+    height: 50px;
+    padding-top: 15px;
+    padding-right: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 15px;
+}
+.gebdatum{
+    border:1px solid skyblue;
+    height: 50px;
+    padding-top: 15px;
+    padding-right: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 15px;
+}
+.gender{
+    border:1px solid skyblue;
+    height: 50px;
+    padding-top: 15px;
+    padding-right: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 15px;
+}
+
+
+button{
+    margin-top: 7%;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: rgb(32, 184, 255);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: aliceblue;
+    font-weight: bolder;
+}
+
+button:hover{
+    color: rgba(0, 0, 0, 0.336);
+    background-color: rgba(32, 184, 255, 0.575);
+}

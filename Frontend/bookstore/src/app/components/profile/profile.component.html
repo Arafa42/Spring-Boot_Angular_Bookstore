@@ -1,5 +1,4 @@
-<div class="container">
-    <div class="title">profile works!</div>
+<!-- <div class="container">
     <div class="firstName">{{profileData.firstName}}</div>
     <div class="lastName">{{profileData.lastName}}</div>
     <div class="email">{{profileData.email}}</div>
@@ -9,4 +8,38 @@
     <div class="gebdatum">{{profileData.gebdatum}}</div>
     <div class="gender">{{profileData.gender}}</div>
     <button (click)="logOut()">Log out</button>
+</div> -->
+
+
+<div class="title">
+    <div class="ttl">Profile</div>
+    <div class="text">
+        <div class="fullName">
+            <div class="pi pi-user" id="user"></div>{{profileData.firstName}} {{profileData.lastName}}
+        </div>
+        <p></p>
+        <div class="email">
+            <div class="pi pi-envelope" id="envelope"></div>{{profileData.email}}
+        </div>
+        <p></p>
+        <div class="address">
+            <div class="pi pi-compass" id="compass"></div>{{profileData.address}}
+        </div>
+        <p></p>
+        <div class="zipGemeente">
+            <div class="pi pi-compass" id="compass2"></div>{{profileData.postcode}}
+            {{profileData.gemeente}}
+        </div>
+        <p></p>
+        <div class="gebdatum">
+            <div class="pi pi-calendar" id="calendar"></div>{{profileData.gebdatum}}
+        </div>
+        <p></p>
+        <div class="gender">
+            <div class="pi pi-heart" id="heart"></div>{{profileData.gender}}
+        </div>
+        <p></p>
+        <button (click)="logOut()">Log out</button>
+        <p></p>
+    </div>
 </div>
