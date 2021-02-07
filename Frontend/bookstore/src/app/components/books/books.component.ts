@@ -17,8 +17,6 @@ export class BooksComponent implements OnInit
 
   allBooks: Book[] = [];
   order: Order = {
-    totalPrice: 0.0,
-    totalAmount: 0,
     email: "",
     price: 0.0,
     itemName: "",
@@ -45,8 +43,7 @@ export class BooksComponent implements OnInit
     this.primengConfig.ripple = true;
     this.getAllBooks();
 
-    this.order.totalAmount = Number(LocalStorageManager.GetTotalAmountOfOrders());
-    this.order.totalPrice = Number(LocalStorageManager.GetTotalPriceOfOrders());
+
   }
 
 
@@ -56,13 +53,8 @@ export class BooksComponent implements OnInit
     this.order.itemImageURL = this.allBooks[id - 1].coverURL;
     this.order.itemName = this.allBooks[id - 1].bookName;
     this.order.price = this.allBooks[id - 1].price;
-    this.order.totalAmount++;
-    this.order.totalPrice += this.allBooks[id - 1].price;
 
 
-    LocalStorageManager.SetTotalAmountOfOrders(this.order.totalAmount.toString());
-    LocalStorageManager.SetTotalPriceOfOrders(this.order.totalPrice.toString());
-    console.log(this.order.totalAmount);
     console.log(this.allBooks[id - 1].bookName);
     this.backendService.createOrderByMail(this.order, LocalStorageManager.GetCurrentMail()).subscribe(
       data =>

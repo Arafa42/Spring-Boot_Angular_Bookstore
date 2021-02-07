@@ -35,8 +35,11 @@ public class OrderController {
     @DeleteMapping("{id}")
     public String deleteOrder(@PathVariable Long id){return orderService.deleteOrder(id);}
 
+    @DeleteMapping("{email}/{id}")
+    public String deleteOrder(@PathVariable Long id,@PathVariable String email){return orderService.deleteOrder(id);}
 
-   // @Autowired
+
+    // @Autowired
    // private OrderService orderService;
    // private OrderRepository orderRepository;
 

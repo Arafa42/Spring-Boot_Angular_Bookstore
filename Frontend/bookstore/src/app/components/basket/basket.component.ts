@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { empty } from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { Order } from 'src/app/models/Order';
 import { LocalStorageManager } from 'src/app/other/LocalStorageManager';
 import { BackendService } from 'src/app/services/backend/backend.service';
+
+
 
 @Component({
   selector: 'app-basket',
@@ -11,6 +13,8 @@ import { BackendService } from 'src/app/services/backend/backend.service';
 })
 export class BasketComponent implements OnInit
 {
+
+  public payPalConfig?: IPayPalConfig;
   orders: Order[] = [];
   totalPrice: number = 0;
 
@@ -18,8 +22,8 @@ export class BasketComponent implements OnInit
 
   ngOnInit(): void
   {
+    this.initConfig();
     this.getOrdersFromCurrentUser(LocalStorageManager.GetCurrentMail());
-    this.totalPrice = Number(LocalStorageManager.GetTotalPriceOfOrders());
   }
 
   getOrdersFromCurrentUser(email: string)
@@ -29,10 +33,11 @@ export class BasketComponent implements OnInit
       {
         console.log(data);
         this.orders = data;
-        if (data.length == 0) {
-          LocalStorageManager.SetTotalAmountOfOrders("0");
-          LocalStorageManager.SetTotalPriceOfOrders("0.0");
+
+        for (let i = 0; i < data.length; i++) {
+          this.totalPrice += data[i].price;
         }
+
         console.log(this.totalPrice);
       },
       error =>
@@ -41,4 +46,82 @@ export class BasketComponent implements OnInit
       }
     );
   }
+
+
+  deleteItem(id: number)
+  {
+    console.log(id);
+    this.backendService.deleteOrder(id, LocalStorageManager.GetCurrentMail().toString()).subscribe(
+      data =>
+      {
+        // console.log(data);
+      },
+      error =>
+      {
+        console.log(error);
+      }
+    );
+    this.refreshPage();
+  }
+
+  refreshPage()
+  {
+    setTimeout(() =>
+    {
+      window.location.reload();
+    }, 50);
+  }
+
+
+
+
+
+
+  private initConfig(): void
+  {
+    this.payPalConfig = {
+      currency: 'EUR',
+      clientId: 'sb',
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            amount: {
+              currency_code: 'EUR',
+              value: this.totalPrice.toString(),
+            }
+          }
+        ]
+      },
+      advanced: {
+        commit: 'true'
+      },
+      style: {
+        label: 'paypal',
+        layout: 'vertical'
+      },
+      onApprove: (data, actions) =>
+      {
+        actions.order.get().then(details =>
+        {
+        });
+      },
+      onClientAuthorization: (data) =>
+      {
+      },
+      onCancel: (data, actions) =>
+      {
+      },
+      onError: err =>
+      {
+        console.log('OnError', err);
+      },
+      onClick: (data, actions) =>
+      {
+      },
+    };
+  }
+
+
+
 }

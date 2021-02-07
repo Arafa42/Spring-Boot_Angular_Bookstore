@@ -22,7 +22,7 @@ public class OrderService {
     public List<Order> getOrdersByEmail(String email){return orderRepository.findByEmail(email).orElse(null);}
     public Order createOrder(Order order,String email){return orderRepository.save(order);}
     public String deleteOrder (Long id){ orderRepository.deleteById(id); return "Order deleted with id : " + id; }
-
+    public String deleteOrderByMail (Long id, String email){orderRepository.deleteById(id); return "order deleted with id : " + id;}
 
 
     //  @Autowired

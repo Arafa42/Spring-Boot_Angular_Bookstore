@@ -22,14 +22,6 @@ public class Order {
             updatable = false
     )
     private Long id;
-    @Column(
-            name="totalPrice"
-    )
-    private Double totalPrice;
-    @Column(
-            name="totalAmount"
-    )
-    private Integer totalAmount;
     @Email
     @Column(
             name="email",
@@ -65,14 +57,6 @@ public class Order {
         this.id = id;
     }
 
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -96,14 +80,6 @@ public class Order {
         this.price = price;
     }
 
-    public Integer getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(Integer totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
     public String getItemName() {
         return itemName;
     }
@@ -123,10 +99,8 @@ public class Order {
 
 
 
-    public Order(Long id, Double totalPrice, Integer totalAmount, String email, /*List<Book> products*/Double price, String itemName, String itemImageURL) {
+    public Order(Long id, String email, /*List<Book> products*/Double price, String itemName, String itemImageURL) {
         this.id = id;
-        this.totalPrice = totalPrice;
-        this.totalAmount = totalAmount;
         this.email = email;
       //  this.products = products;
         this.price = price;
@@ -139,8 +113,6 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", totalPrice=" + totalPrice +
-                ", totalAmount=" + totalAmount +
                 ", email='" + email + '\'' +
                 ", price=" + price +
                 ", itemName='" + itemName + '\'' +

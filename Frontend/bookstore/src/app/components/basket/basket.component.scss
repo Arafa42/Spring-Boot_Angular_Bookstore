@@ -21,7 +21,7 @@
 }
 
 
-button{
+.bt > button{
     margin-top: 5%;
     width: 150px;
     height: 50px;
@@ -32,8 +32,9 @@ button{
     color: aliceblue;
     font-weight: bolder;
 }
+
     
-button:hover{
+.bt > button:hover{
     color: rgba(0, 0, 0, 0.336);
     background-color: rgba(32, 184, 255, 0.575);
 }
@@ -48,6 +49,22 @@ button:hover{
     color: rgb(32, 184, 255);
     text-shadow: 1px 1px gray;
     opacity: 100%;
-    
 }
 
+
+.ppal{
+    width: 70%;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ordr{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    margin-bottom: 10%;
+    text-align: center;
+    color: rgb(32, 184, 255);
+    text-shadow: 1px 1px gray;
+    opacity: 80%;
+}

@@ -139,9 +139,9 @@ export class BackendService
     return this.http.get<IOrders[]>(url);
   }
 
-  public deleteOrder(id: number)
+  public deleteOrder(id: number, email: string)
   {
-    const url = this.requestURL + "/orders/" + id;
+    const url = this.requestURL + "/orders/" + email + "/" + id;
     return this.http.delete<IOrders>(url);
   }
 

@@ -22,6 +22,12 @@
                 <td>
                     <span class="image-text">€{{order.price}}</span>
                 </td>
+
+                <td>
+                    <span class="image-text"> <button pButton icon="pi pi-trash" class="p-button-danger"
+                            (click)="deleteItem(order.id)"></button></span>
+                </td>
+
                 <!-- <td>
                     <span [class]="'customer-badge status-' + customer.status">{}}</span>
                 </td> -->
@@ -32,8 +38,12 @@
 <p></p>
 <div class="container">
     <div class="totalPrice">
+        <div class="ordr">Order</div>
         Total price : €{{totalPrice}}
         <p></p>
-        <button>Order</button>
+        <!-- <div class="bt"><button>Order</button></div> -->
+        <div class="ppal">
+            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+        </div>
     </div>
 </div>

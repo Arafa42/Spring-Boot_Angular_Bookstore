@@ -40,6 +40,7 @@ import { AngularFireModule } from '@angular/fire';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     ToastModule,
     ButtonModule,
     RippleModule,
+    NgxPayPalModule,
     FormsModule,
     MatSelectModule,
     ReactiveFormsModule,
