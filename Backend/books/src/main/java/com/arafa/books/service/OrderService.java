@@ -24,4 +24,32 @@ public class OrderService {
     public String deleteOrder (Long id){ orderRepository.deleteById(id); return "Order deleted with id : " + id; }
     public String deleteOrderByMail (Long id, String email){orderRepository.deleteById(id); return "order deleted with id : " + id;}
     public String deleteAllOrdersByMail (String email){orderRepository.deleteAll(); return "orders deleted of user : " + email;}
+
+
+    //  @Autowired
+  //  private OrderRepository orderRepository;
+
+    // private BookRepository bookRepository;
+
+   // public OrderService(OrderRepository orderRepository,BookRepository bookRepository){
+   //     this.orderRepository = orderRepository;
+   //     this.bookRepository = bookRepository;
+   // }
+
+   // @Transactional
+   // public ResponseEntity<Object> addOrder(Order order){
+   //     Order newOrder = new Order();
+   //     newOrder.setAmount(order.getAmount());
+   //     newOrder.setTotalPrice(order.getTotalPrice());
+    //    newOrder.setEmail(order.getEmail());
+    //    newOrder.setProducts(order.getProducts());
+    //    Order savedOrder = orderRepository.save(newOrder);
+    //    if(orderRepository.findById(savedOrder.getId()).isPresent())
+    //    {
+    //        return ResponseEntity.accepted().body("Succes");
+    //    }
+    //    else{
+    //        return ResponseEntity.unprocessableEntity().body("Failed");
+    //    }
+   // }
 }
