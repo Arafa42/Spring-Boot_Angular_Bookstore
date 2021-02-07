@@ -3,6 +3,7 @@ package com.arafa.books.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "com.arafa.books.BooksApplication.Author")
 @Table(name="author")
@@ -50,6 +51,17 @@ public class Author {
             columnDefinition = "TEXT"
     )
     private String authorImageURL;
+    @OneToMany(targetEntity = Book.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id")
+    private List<Book> products;
+
+    public List<Book> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Book> products) {
+        this.products = products;
+    }
 
 
     public Long getId() {
@@ -95,12 +107,13 @@ public class Author {
 
     public void setAuthorImageURL(String authorImageURL) { this.authorImageURL = authorImageURL; }
 
-    public Author(String firstName, String lastName, String birthdate, String lifeDescription,String authorImageURL){
+    public Author(String firstName, String lastName, String birthdate, String lifeDescription,String authorImageURL,List<Book> books){
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
         this.lifeDescription = lifeDescription;
         this.authorImageURL = authorImageURL;
+        this.products = books;
     }
 
     @Override

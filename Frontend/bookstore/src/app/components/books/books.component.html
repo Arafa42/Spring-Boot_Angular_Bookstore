@@ -54,7 +54,7 @@
                         <p-rating [ngModel]="book.rating" [readonly]="true" [cancel]="false"></p-rating>
                     </div>
                     <div class="product-grid-item-bottom">
-                        <span class="product-price">${{book.price}}</span>
+                        <span class="product-price">€{{book.price}}</span>
                         <p-button icon="pi pi-shopping-cart" (click)="lala(book.id)"
                             [disabled]="book.category === 'OUTOFSTOCK'">
                         </p-button>

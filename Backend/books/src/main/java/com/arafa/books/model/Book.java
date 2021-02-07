@@ -4,6 +4,7 @@ package com.arafa.books.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "com.arafa.BooksApplication.Book")
 @Table(name="book")
@@ -30,12 +31,6 @@ public class Book {
             columnDefinition = "TEXT"
     )
     private String bookName;
-
-    @Column(
-            name="author",
-            columnDefinition = "TEXT"
-    )
-    private String author;
 
     @Column(
             name="pages"
@@ -69,7 +64,7 @@ public class Book {
 
     @JsonIgnore
     @ManyToOne
-    private Order order;
+    private Author author;
 
     public Long getId() {
         return id;
@@ -87,12 +82,22 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
+    }
+
+
+    @Transient
+    private String authorName;
+    public String getAuthorName(){
+        return getAuthor().getFirstName() + " " + getAuthor().getLastName();
+    }
+    public void setAuthorName(String authorName){
+        this.authorName = authorName;
     }
 
     public Integer getPages() {
@@ -143,20 +148,16 @@ public class Book {
 
     public void setRating(Integer rating) { this.rating = rating; }
 
-    public Order getOrder() {
-        return order;
-    }
+    //public Order getOrder() {return order; }
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+    //public void setOrder(Order order) {this.order = order;}
+
 
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
                 ", bookName='" + bookName + '\'' +
-                ", author='" + author + '\'' +
                 ", pages=" + pages +
                 ", isbn=" + isbn +
                 ", category='" + category + '\'' +
@@ -164,19 +165,21 @@ public class Book {
                 ", summary='" + summary + '\'' +
                 ", price=" + price +
                 ", rating=" + rating +
+                ", author=" + author +
+                ", authorName='" + authorName + '\'' +
                 '}';
     }
 
-    public Book(String bookName, String author, String category, Long isbn, String coverURL, String summary, Double price, Integer rating)
+    public Book(String bookName, String category, Long isbn, String coverURL, String summary, Double price, Integer rating,String authorName)
     {
         this.bookName = bookName;
-        this.author = author;
         this.category = category;
         this.isbn = isbn;
         this.coverURL = coverURL;
         this.summary = summary;
         this.price = price;
         this.rating = rating;
+        this.authorName = authorName;
     }
 
     public Book(){}
