@@ -102,8 +102,18 @@ export class BasketComponent implements OnInit
       },
       onApprove: (data, actions) =>
       {
+        this.backendService.deleteOrdersByUser(LocalStorageManager.GetCurrentMail()).subscribe(
+          data =>
+          {
+          },
+          error =>
+          {
+            console.log(error);
+          }
+        );
         actions.order.get().then(details =>
         {
+          this.refreshPage();
         });
       },
       onClientAuthorization: (data) =>

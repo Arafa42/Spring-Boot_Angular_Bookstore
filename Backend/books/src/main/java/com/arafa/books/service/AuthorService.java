@@ -55,6 +55,4 @@ public class AuthorService {
         catch (Exception e) {throw new CustomRequestException("Update operation failed"); }
         return authorRepository.save(existingAuthor);
     }
-
-
 }

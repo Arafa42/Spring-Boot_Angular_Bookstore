@@ -151,5 +151,10 @@ export class BackendService
     return this.http.post<any>(url, order);
   }
 
+  public deleteOrdersByUser(email: string)
+  {
+    const url = this.requestURL + "/orders/deleteByMail/" + email;
+    return this.http.delete<IOrders>(url);
+  }
 
 }

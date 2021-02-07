@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 public class UserService {
 
-
     @Autowired
     private UserRepository userRepository;
 
@@ -43,7 +42,4 @@ public class UserService {
             existingUser.setGender(user.getGender());
         return userRepository.save(existingUser);
     }
-
-
-
 }
