@@ -68,30 +68,4 @@ public class AuthorController {
         return authorService.updateAuthor(author,id);
     }
 
-
-    // @Autowired
-    // private OrderService orderService;
-    // private OrderRepository orderRepository;
-
-    //  public OrderController(OrderService orderService,OrderRepository orderRepository){
-    //      this.orderService = orderService;
-    //     this.orderRepository = orderRepository;
-    //  }
-
-    //  @PostMapping("/create")
-    //  public ResponseEntity<Object> createOrder(@RequestBody Order order){
-    //      return orderService.addOrder(order);
-    //  }
-
-    //  @GetMapping("/details/{id}")
-    //  public Order getOrder(@PathVariable Long id){
-    //      if(orderRepository.findById(id).isPresent()) {
-    //      return orderRepository.findById(id).get();
-    //      }
-    //      else{
-    //          return null;
-    //      }
-    //      }
-
-
 }
