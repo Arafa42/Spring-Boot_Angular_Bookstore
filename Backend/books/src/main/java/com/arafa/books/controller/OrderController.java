@@ -33,11 +33,13 @@ public class OrderController {
     public List<Order> getOrdersByMail(@PathVariable String email){return orderService.getOrdersByEmail(email);}
 
     @DeleteMapping("{id}")
-    public String deleteOrder(@PathVariable Long id){return orderService.deleteOrder(id);}
+    public String deleteOrderById(@PathVariable Long id){return orderService.deleteOrder(id);}
 
     @DeleteMapping("{email}/{id}")
-    public String deleteOrder(@PathVariable Long id,@PathVariable String email){return orderService.deleteOrder(id);}
+    public String deleteOrdersByMail(@PathVariable Long id,@PathVariable String email){return orderService.deleteOrderByMail(id,email);}
 
+    @DeleteMapping("deleteByMail/{email}")
+    public String deleteAllOrdersByMail(@PathVariable String email){return orderService.deleteAllOrdersByMail(email);}
 
     // @Autowired
    // private OrderService orderService;
